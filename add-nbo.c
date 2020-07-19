@@ -4,8 +4,8 @@
 
 int main(int argc, char* argv[]){
 	
-	uint32_t a[1];
-	uint32_t b[1];
+	uint32_t a;
+	uint32_t b;
 
 	FILE *fp, *fp2;
 
@@ -26,11 +26,11 @@ int main(int argc, char* argv[]){
 		return 0;
 	}
 	
-	fread(a, 4, 1, fp); // file1 contents read
-	fread(b, 4, 1, fp2); // file2 contents read
+	fread(&a, 4, 1, fp); // file1 contents read
+	fread(&b, 4, 1, fp2); // file2 contents read
 
-	uint32_t change_a = ntohl(a[0]);
-	uint32_t change_b = ntohl(b[0]);
+	uint32_t change_a = ntohl(a);
+	uint32_t change_b = ntohl(b);
 	uint32_t result = change_a + change_b;
 
 	printf("%d(0x%x) + %d(0x%x) = %d(0x%x)\n", change_a, change_a, change_b, change_b, result, result);
